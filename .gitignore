@@ -1,0 +1,7 @@
+target
+.classpath
+.project
+.settings
+Genesis
+test-output
+.DS_Store

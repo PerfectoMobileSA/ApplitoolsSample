@@ -1,0 +1,9 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="Applitools Suite">
+	<test name="Applitools Tests" group-by-instances="true">
+		<classes>
+			<class name="applitools.SampleTest" />
+		</classes>
+	</test>
+</suite>
