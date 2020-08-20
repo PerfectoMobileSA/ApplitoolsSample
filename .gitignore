@@ -5,3 +5,5 @@ target
 Genesis
 test-output
 .DS_Store
+.idea/
+*.iml
