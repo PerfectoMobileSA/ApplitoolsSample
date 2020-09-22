@@ -70,6 +70,7 @@ public class AppliBase{
 		// Applitools key and batch details are set. Set the APPLITOOLS_KEY as a -D System property from Maven/ hardcode it here
 		eyes.setApiKey(System.getProperty("APPLITOOLS_KEY", API_KEY));
 		eyes.setBatch(new BatchInfo(TestData.batchName));
+		eyes.setSendDom(false);
 	}
 
 	private ReportiumClient getReportiumClient(WebDriver driver) {
