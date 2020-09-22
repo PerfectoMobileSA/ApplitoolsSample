@@ -7,17 +7,16 @@ import org.openqa.selenium.support.PageFactory;
 
 public class HomePage {
 
-	private WebDriver driver;
+    @FindBy(id = "showExpensesChart")
+    public WebElement expChart;
+    private final WebDriver driver;
 
-	@FindBy(id = "showExpensesChart")
-	public WebElement expChart;
+    public HomePage(WebDriver driver) {
+        this.driver = driver;
+        PageFactory.initElements(driver, this);
+    }
 
-	public void navigateToCanvas() {
-		expChart.click();
-	}
-
-	public HomePage(WebDriver driver) {
-		this.driver = driver;
-		PageFactory.initElements(driver, this);
-	}
+    public void navigateToCanvas() {
+        expChart.click();
+    }
 }
