@@ -1,0 +1,9 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="Demo Suite">
+	<test name="Tests" group-by-instances="true">
+		<classes>
+			<class name="applitools.Perfecto_Native_Applitools" />
+		</classes>
+	</test>
+</suite>

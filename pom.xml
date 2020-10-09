@@ -187,6 +187,17 @@
 			<version>RELEASE</version>
 		</dependency>
 		<dependency>
+		  <groupId>com.applitools</groupId>
+		  <artifactId>eyes-selenium-java3</artifactId>
+		  <version>RELEASE</version>
+		  <exclusions>
+		    <exclusion>
+		      <groupId>com.applitools</groupId>
+		      <artifactId>eyes-connectivity-java3-jersey2x</artifactId>
+		    </exclusion>
+		  </exclusions>
+		</dependency>
+		<dependency>
 			<groupId> org.json </groupId>
 			<artifactId> org.json </artifactId>
 			<version>RELEASE</version>
