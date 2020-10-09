@@ -7,7 +7,7 @@ Steps to setup & execute the scripts are as follows.
 1. Clone this project.
 2. Import this project as an existing maven project and run the following maven goals:
 
-clean install test -Dversion=v1 -DAPPLITOOLS_KEY={key} -DcloudName={cloud name, e.g. demo} -DsecurityToken={Perfecto token}
+clean install test -Dversion=v1 -DAPPLITOOLS_KEY={key} -DcloudName={cloud name, e.g. demo} -DsecurityToken={Perfecto token} -DtestNGSuite={xml file  e.g. native.xml} 
 
 Note: 
 1. APPLITOOLS_KEY should be a valid applitools API key (obviously) :)
