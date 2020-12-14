@@ -9,6 +9,7 @@ import com.perfecto.reportium.test.TestContext;
 import com.perfecto.reportium.test.result.TestResult;
 import com.perfecto.reportium.test.result.TestResultFactory;
 import org.jetbrains.annotations.NotNull;
+import org.openqa.selenium.Platform;
 import org.openqa.selenium.SessionNotCreatedException;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
@@ -24,7 +25,7 @@ public class MobileWebSample {
 
     private final String CLOUD_NAME = "<CLOUD_NAME>";  // Put your perfecto cloud name here/ pass it a -D System property from Maven
     private final String SECURITY_TOKEN = "<PERFECTO_TOKEN>"; // Put your Perfecto security Key here/ pass it a -D System property from Maven
-    private final String suffix = "7";
+    private final String suffix = "6";
     private final String batchName = "perfecto-ios" + suffix;
     private final String appName = "ladureeTest";
     private final String cloudName = System.getProperty("cloudName", CLOUD_NAME);
@@ -34,12 +35,11 @@ public class MobileWebSample {
     private ReportiumClient reportiumClient;
 
     @Test
-    public void seleniumTestv12() throws Exception {
-        String iOS_version = "12.*";
-        String testName = "seleniumTestv12";
+    public void seleniumTest() throws Exception {
+        String testName = "seleniumTest";
         System.out.println("Running test: " + testName);
 
-        DesiredCapabilities capabilities = getDesiredCapabilities(iOS_version);
+        DesiredCapabilities capabilities = getDesiredCapabilities();
         driver = createDriver(capabilities);
 
         Eyes eyes = instantiateEyes(testName);
@@ -81,7 +81,7 @@ public class MobileWebSample {
     private Eyes instantiateEyes(String testName) {
         System.out.println("Creating eyes for test: " + testName);
         Eyes eyes = new Eyes();
-        eyes.setApiKey(System.getenv("APPLITOOLS_API_KEY"));
+        eyes.setApiKey(System.getenv("APPLITOOLS_KEY") != null ? System.getenv("APPLITOOLS_KEY"): System.getProperty("APPLITOOLS_KEY"));
         eyes.setMatchLevel(MatchLevel.STRICT);
         eyes.setBranchName("main");
         eyes.setBatch(batchInfo);
@@ -89,12 +89,12 @@ public class MobileWebSample {
     }
 
     @NotNull
-    private DesiredCapabilities getDesiredCapabilities(String iOS_version) throws Exception {
-        DesiredCapabilities capabilities = new DesiredCapabilities();
+    private DesiredCapabilities getDesiredCapabilities() throws Exception {
+		String browserName = "mobileOS";
+		DesiredCapabilities capabilities = new DesiredCapabilities(browserName, "", Platform.ANY);
         capabilities.setCapability("platformName", "iOS");
         capabilities.setCapability("model", "iPhone-" + suffix);
-        capabilities.setCapability("browserName", "Safari");
-        capabilities.setCapability("platformVersion", System.getProperty("iOS_version", iOS_version));
+//        capabilities.setCapability("browserName", "Safari");
         capabilities.setCapability("openDeviceTimeout", 2);
         capabilities.setCapability("securityToken", Utils.fetchSecurityToken(securityToken));
         capabilities.setCapability("useAppiumForWeb", true);
