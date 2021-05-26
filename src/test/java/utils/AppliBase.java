@@ -14,6 +14,7 @@ import com.perfecto.reportium.model.Project;
 import com.perfecto.reportium.test.TestContext;
 import com.perfecto.reportium.test.result.TestResultFactory;
 import org.apache.commons.io.IOUtils;
+import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
@@ -64,8 +65,9 @@ public class AppliBase {
         String cloudName = System.getProperty("cloudName", CLOUD_NAME);
         String securityToken = System.getProperty("securityToken", SECURITY_TOKEN);
         //Perfecto's desired capabilities are set to open any available iPhone-8 device.
-        DesiredCapabilities capabilities = new DesiredCapabilities();
+        DesiredCapabilities capabilities = new DesiredCapabilities("mobileOS", "", Platform.ANY);
         capabilities.setCapability("securityToken", securityToken);
+        capabilities.setCapability("openDeviceTimeout", 10);
         capabilities.setCapability("model", MODEL); // Change the device model as per your needs
         try {
             driver = new RemoteWebDriver(new URL("https://" + cloudName + ".perfectomobile.com/nexperience/perfectomobile/wd/hub"), capabilities);
